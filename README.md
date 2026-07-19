@@ -3,15 +3,10 @@
 
 A REST API for a book review blog. Users can register, log in, and create, edit, or delete their own book review posts. Posts can be browsed and filtered by category.
 
-- **Live app:** https://first-full-stack-application-for-x2ip.onrender.com
-- **GitHub repo:** https://github.com/MartinEverett23/First-Full-Stack-Application-For-Pageturners.git
+- Live app on Render: https://first-full-stack-application-for-x2ip.onrender.com
+- GitHub repo: https://github.com/MartinEverett23/First-Full-Stack-Application-For-Pageturners.git
+- Video link: https://www.loom.com/share/72bb132bb51446dbac7e4ea2c06faf91
 
-## Tech Stack
-
-- Node.js / Express
-- PostgreSQL with Sequelize ORM
-- JSON Web Tokens (JWT) for authentication
-- bcrypt for password hashing
 
 ## Getting Started
 

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PageTurner – Book Review Blog</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <h1 class="logo">📖 PageTurner</h1>
+        <p class="tagline">Honest reviews from a passionate reader</p>
+
+        <nav class="main-nav">
+          <a href="#" class="nav-link active" onclick="showSection('home')">Home</a>
+          <a href="#" class="nav-link" onclick="showSection('login')">Log In</a>
+          <a href="#" class="nav-link" onclick="showSection('register')">Register</a>
+          <!-- This button only shows when you're logged in -->
+          <a href="#" class="nav-link hidden" id="nav-new-post" onclick="showSection('new-post')">+ New Post</a>
+          <a href="#" class="nav-link hidden" id="nav-logout" onclick="logout()">Log Out</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="container">
+        <h2 class="hero-title">Find your next great read.</h2>
+        <p class="hero-subtitle">Browse honest book reviews across Fiction, Sci-Fi, Self-Help and more.</p>
+      </div>
+    </section>
+
+    <main class="container main-content">
+
+      <section id="section-home">
+
+        <div class="filter-bar">
+          <span class="filter-label">Filter by:</span>
+          <button class="filter-btn active" onclick="filterPosts('all')">All</button>
+          <button class="filter-btn" onclick="filterPosts('Fiction')">Fiction</button>
+          <button class="filter-btn" onclick="filterPosts('Non-Fiction')">Non-Fiction</button>
+          <button class="filter-btn" onclick="filterPosts('Sci-Fi')">Sci-Fi</button>
+          <button class="filter-btn" onclick="filterPosts('Self-Help')">Self-Help</button>
+          <button class="filter-btn" onclick="filterPosts('Currently Reading')">Currently Reading</button>
+        </div>
+
+        <p class="status-msg hidden" id="logged-in-msg"></p>
+
+        <div class="posts-grid" id="posts-grid">
+        </div>
+
+        <p class="empty-state hidden" id="empty-state">No posts found in this category yet.</p>
+
+      </section>
+
+      <section id="section-login" class="hidden">
+        <div class="form-card">
+          <h2 class="form-title">Log In</h2>
+
+          <p class="form-error hidden" id="login-error"></p>
+
+          <div class="form-group">
+            <label for="login-username">Email</label>
+            <input type="email" id="login-username" placeholder="Enter your email" />
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="Enter your password" />
+          </div>
+
+          <button class="btn btn-primary" onclick="login()">Log In</button>
+
+          <p class="form-switch">
+            Don't have an account?
+            <a href="#" onclick="showSection('register')">Register here</a>
+          </p>
+        </div>
+      </section>
+
+      <section id="section-register" class="hidden">
+        <div class="form-card">
+          <h2 class="form-title">Create an Account</h2>
+
+          <p class="form-error hidden" id="register-error"></p>
+          <p class="form-success hidden" id="register-success"></p>
+
+          <div class="form-group">
+            <label for="reg-username">Username</label>
+            <input type="text" id="reg-username" placeholder="Choose a username" />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email">Email</label>
+            <input type="email" id="reg-email" placeholder="your@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <input type="password" id="reg-password" placeholder="Create a password" />
+          </div>
+
+          <button class="btn btn-primary" onclick="register()">Register</button>
+
+          <p class="form-switch">
+            Already have an account?
+            <a href="#" onclick="showSection('login')">Log in here</a>
+          </p>
+        </div>
+      </section>
+
+      <section id="section-new-post" class="hidden">
+        <div class="form-card form-card--wide">
+          <h2 class="form-title">Write a New Review</h2>
+
+          <p class="form-error hidden" id="post-error"></p>
+
+          <div class="form-group">
+            <label for="post-title">Book Title</label>
+            <input type="text" id="post-title" placeholder="e.g. The Martian" />
+          </div>
+
+          <div class="form-group">
+            <label for="post-author">Book Author</label>
+            <input type="text" id="post-author" placeholder="e.g. Andy Weir" />
+          </div>
+
+          <div class="form-group">
+            <label for="post-category">Category</label>
+            <select id="post-category">
+              <option value="">-- Pick a category --</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Sci-Fi">Sci-Fi</option>
+              <option value="Self-Help">Self-Help</option>
+              <option value="Currently Reading">Currently Reading</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Your Rating</label>
+            <div class="star-picker" id="star-picker">
+            </div>
+            <p class="rating-hint">Click a star to set your rating</p>
+          </div>
+
+          <div class="form-group">
+            <label for="post-body">Your Review</label>
+            <textarea id="post-body" rows="6" placeholder="What did you think? Would you recommend it?"></textarea>
+          </div>
+
+          <button class="btn btn-primary" onclick="createPost()">Publish Review</button>
+          <button class="btn btn-secondary" onclick="showSection('home')">Cancel</button>
+        </div>
+      </section>
+
+      <section id="section-edit-post" class="hidden">
+        <div class="form-card form-card--wide">
+          <h2 class="form-title">Edit Review</h2>
+
+          <p class="form-error hidden" id="edit-error"></p>
+
+          <input type="hidden" id="edit-post-id" />
+
+          <div class="form-group">
+            <label for="edit-title">Book Title</label>
+            <input type="text" id="edit-title" />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-author">Book Author</label>
+            <input type="text" id="edit-author" />
+          </div>
+
+          <div class="form-group">
+            <label for="edit-category">Category</label>
+            <select id="edit-category">
+              <option value="Fiction">Fiction</option>
+              <option value="Non-Fiction">Non-Fiction</option>
+              <option value="Sci-Fi">Sci-Fi</option>
+              <option value="Self-Help">Self-Help</option>
+              <option value="Currently Reading">Currently Reading</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Your Rating</label>
+            <div class="star-picker" id="edit-star-picker"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="edit-body">Your Review</label>
+            <textarea id="edit-body" rows="6"></textarea>
+          </div>
+
+          <button class="btn btn-primary" onclick="saveEdit()">Save Changes</button>
+          <button class="btn btn-secondary" onclick="showSection('home')">Cancel</button>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>📖 PageTurner &copy; 2024 – Built with Node.js, Express &amp; MySQL</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

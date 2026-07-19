@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Project Hail Mary",
+    "bookAuthor": "Andy Weir",
+    "category": "Sci-Fi",
+    "body": "An absolutely thrilling solo survival story set in space. Weir somehow made astrophysics funny and heartfelt. Highly recommend.",
+    "rating": 5,
+    "postedBy": "alice"
+  },
+  {
+    "title": "Atomic Habits",
+    "bookAuthor": "James Clear",
+    "category": "Self-Help",
+    "body": "Clear and practical advice on building good habits. The 1% improvement concept genuinely changed how I think about progress.",
+    "rating": 4,
+    "postedBy": "bob"
+  },
+  {
+    "title": "The Great Gatsby",
+    "bookAuthor": "F. Scott Fitzgerald",
+    "category": "Fiction",
+    "body": "Classic American novel about wealth, love, and the hollow pursuit of the American Dream. Fitzgerald's prose is stunning.",
+    "rating": 4,
+    "postedBy": "alice"
+  },
+  {
+    "title": "Sapiens",
+    "bookAuthor": "Yuval Noah Harari",
+    "category": "Non-Fiction",
+    "body": "A sweeping history of humankind from the Stone Age to the present. Sometimes controversial, always thought-provoking.",
+    "rating": 5,
+    "postedBy": "bob"
+  },
+  {
+    "title": "The Name of the Wind",
+    "bookAuthor": "Patrick Rothfuss",
+    "category": "Currently Reading",
+    "body": "Just started this one and I can already tell it's going to be a favourite. Check back for the full review!",
+    "rating": 3,
+    "postedBy": "alice"
+  }
+]
